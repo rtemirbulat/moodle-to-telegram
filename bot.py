@@ -31,13 +31,13 @@ def main():
     updater.dispatcher.add_handler(MessageHandler(filters=Filters.all,callback=message_handler))
     updater.start_polling()
     updater.idle()
-    
+@catch_err
 def message_handler(update: Updater, context: CallbackContext):
     text = update.message.text 
     if text == CALLBACK_BUTTON1_REQ:
         return request_deadline_handler(update=update,context=CallbackContext)
     if text == CALLBACK_BUTTON4_MOODLE:
-        return link_to_moodle_handler(update=Updater, context= CallbackContext)    
+        return link_to_moodle_handler(update=update, context= CallbackContext)    
     reply_markup = ReplyKeyboardMarkup(
         keyboard = [
             [
@@ -53,9 +53,11 @@ def message_handler(update: Updater, context: CallbackContext):
         text="Select any option",
         reply_markup = reply_markup,
     )
+@catch_err
 def request_deadline_handler(update: Updater, context: CallbackContext):
     update.message.reply_text(text=show_events()
     )
+@catch_err
 def link_to_moodle_handler(update: Updater, context: CallbackContext):
     update.message.reply_text(text='link to your moodle website')
 
