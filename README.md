@@ -15,4 +15,5 @@ pip install -r requirements.txt
 5. create your bot in botFather 
 https://telegram.me/BotFather
 
-6.get your credentials (e.g.token and add them to config.py)
+6. get your credentials (e.g.token and add them to config.py)
+7. run bot.py
